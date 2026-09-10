@@ -1,0 +1,16 @@
+{
+  "name": "lan-device-monitor",
+  "version": "1.0.0",
+  "description": "LAN Device Monitoring Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0",
+    "exceljs": "^4.4.0",
+    "express-session": "^1.18.0",
+    "cookie-parser": "^1.4.6"
+  }
+}

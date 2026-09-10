@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin - LAN Device Monitor</title>
+<link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <h1>LAN Device Monitor</h1>
+    <p class="sub">Admin Login</p>
+    <input type="text" id="username" placeholder="Username" autocomplete="username" />
+    <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
+    <button id="loginBtn">Sign In</button>
+    <p class="error" id="loginError"></p>
+  </div>
+</div>
+
+<div id="dashboard" class="dashboard hidden">
+  <header class="topbar">
+    <div class="brand">LAN Device Monitor</div>
+    <div class="topbar-actions">
+      <button id="exportBtn" class="btn-secondary">Export .xlsx</button>
+      <button id="logoutBtn" class="btn-ghost">Logout</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total Devices</div>
+      </div>
+      <div class="stat-card online">
+        <div class="stat-value" id="statOnline">0</div>
+        <div class="stat-label">Online</div>
+      </div>
+      <div class="stat-card offline">
+        <div class="stat-value" id="statOffline">0</div>
+        <div class="stat-label">Offline</div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <input type="text" id="searchInput" placeholder="Search by name, IP, browser, OS, device ID..." />
+      <select id="filterStatus">
+        <option value="all">All Status</option>
+        <option value="online">Online Only</option>
+        <option value="offline">Offline Only</option>
+      </select>
+    </section>
+
+    <section class="table-wrap">
+      <table id="devicesTable">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Name / Device ID</th>
+            <th>IP Address</th>
+            <th>Browser</th>
+            <th>OS</th>
+            <th>Screen</th>
+            <th>First Seen</th>
+            <th>Last Seen</th>
+            <th>Sessions</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="devicesBody"></tbody>
+      </table>
+      <div id="emptyState" class="empty-state hidden">No devices found</div>
+    </section>
+  </main>
+</div>
+
+<div id="detailModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">Device Details</h2>
+      <button id="closeModal" class="btn-ghost">Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="detail-grid" id="detailGrid"></div>
+      <div class="rename-row">
+        <input type="text" id="renameInput" placeholder="Set custom device name" />
+        <button id="renameBtn" class="btn-secondary">Save Name</button>
+      </div>
+      <h3>Session History</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Connected</th><th>Disconnected</th><th>Duration</th><th>IP</th></tr>
+          </thead>
+          <tbody id="sessionsBody"></tbody>
+        </table>
+      </div>
+      <button id="deleteDeviceBtn" class="btn-danger">Delete Device</button>
+    </div>
+  </div>
+</div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>
